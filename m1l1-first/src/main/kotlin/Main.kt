@@ -1,5 +1,8 @@
 package com.otus.otuskotlin.marketplace
 
+import java.io.FileInputStream
+import java.util.*
+
 fun main() {
-    println("Hello World!")
-}
+        println(System.getenv("keystore"))
+    }
