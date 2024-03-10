@@ -22,7 +22,7 @@ internal class BuildPluginMultiplatform : Plugin<Project> {
             extensions.configure<KotlinMultiplatformExtension> {
                 configureTargets(this@with)
                 sourceSets.configureEach {
-                    languageSettings {
+                    languageSettings.apply {
                         languageVersion = "1.9"
                         progressiveMode = true
                         optIn("kotlin.time.ExperimentalTime")
@@ -36,7 +36,6 @@ internal class BuildPluginMultiplatform : Plugin<Project> {
 @Suppress("LongMethod", "MagicNumber")
 private fun KotlinMultiplatformExtension.configureTargets(project: Project) {
     val libs = project.the<LibrariesForLibs>()
-    targets {
         jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(libs.versions.jvm.language.get()))
 //            vendor.set(JvmVendorSpec.AZUL)
@@ -52,7 +51,6 @@ private fun KotlinMultiplatformExtension.configureTargets(project: Project) {
         linuxX64()
         macosArm64()
         macosX64()
-    }
     project.tasks.withType(JavaCompile::class.java) {
         sourceCompatibility = libs.versions.jvm.language.get()
         targetCompatibility = libs.versions.jvm.compiler.get()
