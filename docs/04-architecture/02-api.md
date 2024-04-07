@@ -17,5 +17,4 @@
 ## Функции (эндпониты)
 
 1. CRUDS (create, read, update, delete, search) для задач (task)
-1. task.offers (опционально)
 

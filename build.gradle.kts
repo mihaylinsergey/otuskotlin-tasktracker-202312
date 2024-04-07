@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
 }
 
-group = "com.otus.otuskotlin.marketplace"
+group = "com.otus.otuskotlin.TaskTracker"
 version = "0.0.1"
 
 repositories {
@@ -16,4 +16,11 @@ subprojects {
     }
     group = rootProject.group
     version = rootProject.version
+}
+
+tasks {
+    create("check") {
+        group = "verification"
+        dependsOn(gradle.includedBuild("ok-TaskTracker-be").task(":check"))
+    }
 }

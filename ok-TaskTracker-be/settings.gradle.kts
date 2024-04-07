@@ -1,4 +1,4 @@
-rootProject.name = "ok-controller-be"
+rootProject.name = "ok-TaskTracker-be"
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -23,4 +23,8 @@ pluginManagement {
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
+
+include(":ok-TaskTracker-api-v1-jackson")
+include(":ok-TaskTracker-common")
+include(":ok-TaskTracker-api-v1-mappers")
 
