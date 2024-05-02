@@ -27,4 +27,10 @@ plugins {
 include(":ok-TaskTracker-api-v1-jackson")
 include(":ok-TaskTracker-common")
 include(":ok-TaskTracker-api-v1-mappers")
+include(":ok-TaskTracker-app-ktor")
+include(":ok-TaskTracker-stubs")
+include(":ok-TaskTracker-app-common")
+include(":ok-TaskTracker-biz")
+include(":ok-TaskTracker-api-log1")
+include(":ok-TaskTracker-app-kafka")
 
