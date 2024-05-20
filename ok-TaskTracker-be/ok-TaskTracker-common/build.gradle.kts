@@ -1,24 +1,13 @@
 plugins {
-    id("build-kmp")
+    id("build-jvm")
 }
 
-group = rootProject.group
-version = rootProject.version
+dependencies {
+    implementation(kotlin("stdlib-common"))
 
-kotlin {
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
+    api(libs.kotlinx.datetime)
+    api("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-common")
 
-                api(libs.kotlinx.datetime)
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
-    }
+    testImplementation(kotlin("test-common"))
+    testImplementation(kotlin("test-annotations-common"))
 }
