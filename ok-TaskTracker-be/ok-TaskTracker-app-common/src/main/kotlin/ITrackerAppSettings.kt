@@ -1,7 +1,7 @@
 package ru.otus.otuskotlin.marketplace.app.common
 
 import TrackerCorSettings
-import ru.otus.otuskotlin.TaskTracker.biz.TrackerTaskProcessor
+import ru.otus.otuskotlin.TrackerTask.biz.TrackerTaskProcessor
 
 
 interface ITrackerAppSettings {

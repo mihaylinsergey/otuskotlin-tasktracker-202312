@@ -1,8 +1,8 @@
 package ru.otus.otuskotlin.TaskTracker.app.kafka
 
 import TrackerCorSettings
-import ru.otus.otuskotlin.TaskTracker.biz.TrackerTaskProcessor
 import ru.otus.otuskotlin.TaskTracker.logging.common.TrackerLoggerProvider
+import ru.otus.otuskotlin.TrackerTask.biz.TrackerTaskProcessor
 import ru.otus.otuskotlin.marketplace.app.common.ITrackerAppSettings
 import ru.otus.otuskotlin.tracker.logging.jvm.trackerLoggerLogback
 

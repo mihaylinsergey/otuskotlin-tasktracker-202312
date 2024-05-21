@@ -4,7 +4,7 @@ import TrackerCorSettings
 import fromTransport
 import kotlinx.coroutines.test.runTest
 import ru.otus.otuskotlin.TaskTracker.api.v1.models.*
-import ru.otus.otuskotlin.TaskTracker.biz.TrackerTaskProcessor
+import ru.otus.otuskotlin.TrackerTask.biz.TrackerTaskProcessor
 import toTransportTask
 import kotlin.test.Test
 import kotlin.test.assertEquals

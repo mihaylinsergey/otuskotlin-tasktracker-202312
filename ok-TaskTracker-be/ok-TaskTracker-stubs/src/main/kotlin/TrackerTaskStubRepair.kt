@@ -23,6 +23,7 @@ object TrackerTaskStubRepair {
             customerId = TrackerUserId("1"),
             taskType = TrackerWorkSide.CUSTOMER,
             visibility = TrackerVisibility.VISIBLE_PUBLIC,
+            lock = TrackerTaskLock("123-234-abc-ABC"),
             permissionsClient = mutableSetOf(
                 TrackerTaskPermissionClient.READ,
                 TrackerTaskPermissionClient.UPDATE,
