@@ -1,5 +1,4 @@
-import TrackerCorSettings
-import ru.otus.otuskotlin.TaskTracker.biz.TrackerTaskProcessor
+import ru.otus.otuskotlin.TrackerTask.biz.TrackerTaskProcessor
 import ru.otus.otuskotlin.marketplace.app.common.ITrackerAppSettings
 
 data class TrackerAppSettings(

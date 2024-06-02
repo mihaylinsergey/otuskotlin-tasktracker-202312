@@ -17,6 +17,10 @@ data class TrackerTask(
 ) {
     fun isEmpty() = this == NONE
 
+    fun deepCopy(): TrackerTask = copy(
+        permissionsClient = permissionsClient.toMutableSet(),
+    )
+
     companion object {
         private val NONE = TrackerTask()
     }

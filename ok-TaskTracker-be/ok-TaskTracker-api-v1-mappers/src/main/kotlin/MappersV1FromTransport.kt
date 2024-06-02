@@ -28,7 +28,7 @@ private fun TaskDebug?.transportToStubCase(): TrackerStubs = when (this?.stub) {
     TaskRequestDebugStubs.NOT_FOUND -> TrackerStubs.NOT_FOUND
     TaskRequestDebugStubs.BAD_ID -> TrackerStubs.BAD_ID
     TaskRequestDebugStubs.BAD_TITLE -> TrackerStubs.BAD_TITLE
-    TaskRequestDebugStubs.BAD_DESCRIPTION -> TrackerStubs.BAD_DESCRIPTION
+    TaskRequestDebugStubs.BAD_DESCRIPTION -> TrackerStubs.BAD_EXECUTOR
     TaskRequestDebugStubs.BAD_VISIBILITY -> TrackerStubs.BAD_VISIBILITY
     TaskRequestDebugStubs.CANNOT_DELETE -> TrackerStubs.CANNOT_DELETE
     TaskRequestDebugStubs.BAD_SEARCH_STRING -> TrackerStubs.BAD_SEARCH_STRING
