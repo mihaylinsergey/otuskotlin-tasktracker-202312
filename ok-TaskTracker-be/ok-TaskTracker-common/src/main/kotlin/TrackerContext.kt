@@ -1,5 +1,8 @@
 import kotlinx.datetime.Instant
 import models.*
+import permissions.TrackerPrincipalModel
+import permissions.TrackerUserPermissions
+import repo.IRepoTask
 import stubs.TrackerStubs
 
 data class TrackerContext(
@@ -11,6 +14,10 @@ data class TrackerContext(
     var workMode: TrackerWorkMode = TrackerWorkMode.PROD,
     var stubCase: TrackerStubs = TrackerStubs.NONE,
 
+    var principal: TrackerPrincipalModel = TrackerPrincipalModel.NONE,
+    val permissionsChain: MutableSet<TrackerUserPermissions> = mutableSetOf(),
+    var permitted: Boolean = false,
+
     var requestId: TrackerRequestId = TrackerRequestId.NONE,
     var timeStart: Instant = Instant.NONE,
     var taskRequest: TrackerTask = TrackerTask(),
@@ -21,6 +28,12 @@ data class TrackerContext(
 
     var taskValidated: TrackerTask = TrackerTask(),
     var taskFilterValidated: TrackerTaskFilter = TrackerTaskFilter(),
+
+    var taskRepo: IRepoTask = IRepoTask.NONE,
+    var taskRepoRead: TrackerTask= TrackerTask(), // То, что прочитали из репозитория
+    var taskRepoPrepare: TrackerTask = TrackerTask(), // То, что готовим для сохранения в БД
+    var taskRepoDone: TrackerTask = TrackerTask(),  // Результат, полученный из БД
+    var tasksRepoDone: MutableList<TrackerTask> = mutableListOf(),
 
     var taskResponse: TrackerTask = TrackerTask(),
     var tasksResponse: MutableList<TrackerTask> = mutableListOf(),

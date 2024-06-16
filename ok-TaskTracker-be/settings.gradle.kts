@@ -12,7 +12,6 @@ pluginManagement {
     includeBuild("../build-plugin")
     plugins {
         id("build-jvm") apply false
-        id("build-kmp") apply false
     }
     repositories {
         mavenCentral()
@@ -24,6 +23,10 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
+// Включает вот такую конструкцию
+//implementation(projects.m2l5Gradle.sub1.ssub1)
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":ok-TaskTracker-api-v1-jackson")
 include(":ok-TaskTracker-common")
 include(":ok-TaskTracker-api-v1-mappers")
@@ -33,4 +36,9 @@ include(":ok-TaskTracker-app-common")
 include(":ok-TaskTracker-biz")
 include(":ok-TaskTracker-api-log1")
 include(":ok-TaskTracker-app-kafka")
+include(":ok-TaskTracker-repo-common")
+include(":ok-TaskTracker-repo-inmemory")
+include(":ok-TaskTracker-repo-stubs")
+include(":ok-TaskTracker-repo-tests")
+include(":ok-TaskTracker-repo-gremlin")
 

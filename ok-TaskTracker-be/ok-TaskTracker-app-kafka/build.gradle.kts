@@ -20,6 +20,7 @@ dependencies {
     implementation(libs.kotlinx.atomicfu)
 
     implementation("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-logback")
+    implementation("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-common")
 
     implementation(project(":ok-TaskTracker-app-common"))
 

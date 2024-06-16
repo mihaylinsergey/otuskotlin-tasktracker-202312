@@ -1,8 +1,9 @@
-package ru.otus.otuskotlin.marketplace.app.ktor.v1
+package v1
 
 import TrackerAppSettings
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import ru.otus.otuskotlin.TaskTracker.app.ktor.v1.*
 
 fun Route.v1Task(appSettings: TrackerAppSettings) {
     route("task") {

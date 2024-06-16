@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace.app.ktor.v1
+package ru.otus.otuskotlin.TaskTracker.app.ktor.v1
 
 import TrackerAppSettings
 import io.ktor.server.application.*

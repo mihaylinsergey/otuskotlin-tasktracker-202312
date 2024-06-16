@@ -40,3 +40,15 @@ ktor:
 #    queue: mkpl-ads-v1-queue
 #    consumerTag: "mkpl-ads-v1-consumer"
 #    exchangeType: direct
+
+tasktracker:
+  repository:
+    test: "inmemory"
+    prod: "$DB_TYPE_PROD:inmemory"
+
+  gremlin:
+    host: "$DB_GREMLIN_HOST:localhost"
+    user: "$DB_GREMLIN_HOST:root"
+    password: "$DB_GREMLIN_HOST:root_root"
+    port: "$DB_GREMLIN_PORT:8182"
+    enableSsl: false
