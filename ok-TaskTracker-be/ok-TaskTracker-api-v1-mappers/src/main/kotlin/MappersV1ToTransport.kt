@@ -72,7 +72,7 @@ private fun TrackerTask.toTransportTask(): TaskResponseObject = TaskResponseObje
     permissions = permissionsClient.toTransportTask(),
 )
 
-private fun List<TrackerStageList>.stageListToTransport() : List<StageList>? = this
+internal fun List<TrackerStageList>.stageListToTransport() : List<StageList>? = this
     .map { it.toTransportTask() }
     .toList()
     .takeIf { it.isNotEmpty() }
@@ -98,20 +98,20 @@ private fun TrackerTaskPermissionClient.toTransportTask() = when (this) {
     TrackerTaskPermissionClient.DELETE -> TaskPermissions.DELETE
 }
 
-private fun TrackerVisibility.toTransportTask(): TaskVisibility? = when (this) {
+internal fun TrackerVisibility.toTransportTask(): TaskVisibility? = when (this) {
     TrackerVisibility.VISIBLE_PUBLIC -> TaskVisibility.PUBLIC
     TrackerVisibility.VISIBLE_TO_GROUP -> TaskVisibility.REGISTERED_ONLY
     TrackerVisibility.VISIBLE_TO_CUSTOMER -> TaskVisibility.CUSTOMER_ONLY
     TrackerVisibility.NONE -> null
 }
 
-private fun TrackerWorkSide.toTransportTask(): WorkSide? = when (this) {
+internal fun TrackerWorkSide.toTransportTask(): WorkSide? = when (this) {
     TrackerWorkSide.CUSTOMER -> WorkSide.CUSTOMER
     TrackerWorkSide.EXECUTOR -> WorkSide.EXECUTOR
     TrackerWorkSide.NONE -> null
 }
 
-private fun List<TrackerError>.toTransportErrors(): List<Error>? = this
+internal fun List<TrackerError>.toTransportErrors(): List<Error>? = this
     .map { it.toTransportTask() }
     .toList()
     .takeIf { it.isNotEmpty() }

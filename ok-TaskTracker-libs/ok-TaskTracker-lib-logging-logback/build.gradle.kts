@@ -6,6 +6,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     implementation(project(":ok-TaskTracker-lib-logging-common"))
+    testImplementation(project(":ok-TaskTracker-lib-logging-common"))
     implementation(libs.coroutines.core)
     implementation(libs.kotlinx.datetime)
     implementation(libs.logback)

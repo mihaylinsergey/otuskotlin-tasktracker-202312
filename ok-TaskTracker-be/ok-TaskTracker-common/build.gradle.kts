@@ -5,8 +5,9 @@ plugins {
 dependencies {
     implementation(kotlin("stdlib-common"))
 
-    api(libs.kotlinx.datetime)
-    api("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-common")
+    implementation(libs.kotlinx.datetime)
+    implementation("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-common")
+    implementation(libs.coroutines.core)
 
     testImplementation(kotlin("test-common"))
     testImplementation(kotlin("test-annotations-common"))

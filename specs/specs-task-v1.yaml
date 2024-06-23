@@ -321,6 +321,10 @@ components:
         searchString:
           type: string
           description: Поисковая строка, которая будет искаться в задачах
+        customerId:
+          $ref: '#/components/schemas/UserId'
+        taskType:
+          $ref: '#/components/schemas/WorkSide'
 
     TaskSearchRequest:
       allOf:

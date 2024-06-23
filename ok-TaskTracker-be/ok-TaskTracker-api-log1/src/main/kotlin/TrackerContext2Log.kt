@@ -1,9 +1,9 @@
-import kotlinx.datetime.Clock
 import models.*
 import ru.otus.otuskotlin.TaskTracker.api.log1.models.*
+import java.time.Clock
 
 fun TrackerContext.toLog(logId: String) = CommonLogModel(
-    messageTime = Clock.System.now().toString(),
+    messageTime = Clock.systemUTC().toString(),
     logId = logId,
     source = "ok-Tracker",
     task = toTrackerLog(),
@@ -31,7 +31,7 @@ private fun TrackerError.toLog() = ErrorLogModel(
     message = message.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },
     code = code.takeIf { it.isNotBlank() },
-    level = level.name,
+//    level = level.name,
 )
 
 private fun TrackerTask.toLog() = TaskLog(

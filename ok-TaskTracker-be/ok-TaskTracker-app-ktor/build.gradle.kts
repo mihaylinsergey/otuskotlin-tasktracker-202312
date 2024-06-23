@@ -43,6 +43,10 @@ dependencies {
     implementation(project(":ok-TaskTracker-app-common"))
     implementation(project(":ok-TaskTracker-common"))
     implementation(project(":ok-TaskTracker-biz"))
+    implementation(project(":ok-TaskTracker-repo-gremlin"))
+    implementation(project(":ok-TaskTracker-repo-inmemory"))
+    implementation(project(":ok-TaskTracker-repo-stubs"))
+    implementation(project(":ok-TaskTracker-repo-common"))
 
     testImplementation(kotlin("test-junit"))
     testImplementation(kotlin("test"))
@@ -51,4 +55,5 @@ dependencies {
 
     testImplementation(libs.ktor.server.test)
     testImplementation(libs.ktor.client.negotiation)
+    implementation(libs.testcontainers.core)
 }

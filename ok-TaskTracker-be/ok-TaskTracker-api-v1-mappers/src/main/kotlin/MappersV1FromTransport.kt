@@ -87,7 +87,9 @@ fun TrackerContext.fromTransport(request: TaskSearchRequest) {
 }
 
 private fun TaskSearchFilter?.toInternal(): TrackerTaskFilter = TrackerTaskFilter(
-    searchString = this?.searchString ?: ""
+    searchString = this?.searchString ?: "",
+    customerId = this?.customerId?.let { TrackerUserId(it) } ?: TrackerUserId.NONE,
+    workSide = this?.taskType.fromTransport(),
 )
 
 private fun TaskCreateObject.toInternal(): TrackerTask = TrackerTask(

@@ -19,5 +19,8 @@ dependencies {
     testImplementation(project(":ok-TaskTracker-api-v1-jackson"))
     testImplementation(project(":ok-TaskTracker-api-v1-mappers"))
     testImplementation(project(":ok-TaskTracker-app-common"))
+    implementation("ru.otus.otuskotlin.TaskTracker.libs:ok-TaskTracker-lib-logging-common")
     testImplementation(kotlin("test-junit"))
+    // https://mavenlibs.com/maven/dependency/org.jetbrains.kotlinx/kotlinx-datetime
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 }

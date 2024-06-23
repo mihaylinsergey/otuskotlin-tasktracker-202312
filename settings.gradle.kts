@@ -13,5 +13,3 @@ rootProject.name = "ok-TaskTracker-202312"
 includeBuild("lessons")
 includeBuild("ok-TaskTracker-be")
 includeBuild("ok-TaskTracker-libs")
-
-

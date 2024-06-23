@@ -1,31 +1,12 @@
 plugins {
-    id("build-kmp")
+    id("build-jvm")
 }
-
-kotlin {
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
-                implementation(libs.coroutines.core)
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-                implementation(libs.coroutines.test)
-            }
-        }
-        jvmMain {
-            dependencies {
-                implementation(kotlin("stdlib-jdk8"))
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-    }
+dependencies {
+    implementation(kotlin("stdlib-common"))
+    implementation(libs.coroutines.core)
+    testImplementation(kotlin("test-common"))
+    testImplementation(kotlin("test-annotations-common"))
+    testImplementation(libs.coroutines.test)
+    implementation(kotlin("stdlib-jdk8"))
+    testImplementation(kotlin("test-junit"))
 }
