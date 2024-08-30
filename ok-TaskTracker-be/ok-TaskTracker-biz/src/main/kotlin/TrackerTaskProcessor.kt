@@ -3,8 +3,11 @@ package ru.otus.otuskotlin.TrackerTask.biz
 import TrackerContext
 import TrackerCorSettings
 import models.TrackerCommand
+import models.TrackerState
 import models.TrackerTaskId
 import models.TrackerTaskLock
+import repo.*
+import ru.otus.otuskotlin.TrackerTask.cor.chain
 import ru.otus.otuskotlin.TrackerTask.cor.rootChain
 import ru.otus.otuskotlin.TrackerTask.cor.worker
 import ru.otus.otuskotlin.marketplace.biz.general.initStatus
@@ -20,7 +23,7 @@ class TrackerTaskProcessor(
 
     private val businessChain = rootChain<TrackerContext> {
         initStatus("Инициализация статуса")
-//        initRepo("Инициализация репозитория")
+        initRepo("Инициализация репозитория")
 
         operation("Создание задачи", TrackerCommand.CREATE) {
             stubs("Обработка стабов") {
@@ -31,7 +34,7 @@ class TrackerTaskProcessor(
                 stubNoCase("Ошибка: запрошенный стаб недопустим")
             }
             validation {
-                worker("Копируем поля в adValidating") { taskValidating = taskRequest.deepCopy() }
+                worker("Копируем поля в taskValidating") { taskValidating = taskRequest.deepCopy() }
                 worker("Очистка id") { taskValidating.id = TrackerTaskId.NONE }
                 worker("Очистка заголовка") { taskValidating.title = taskValidating.title.trim() }
                 worker("Очистка поля исполнитель") { taskValidating.executor = taskValidating.executor.trim() }
@@ -42,12 +45,12 @@ class TrackerTaskProcessor(
 
                 finishAdValidation("Завершение проверок")
             }
-//            chain {
-//                title = "Логика сохранения"
-//                repoPrepareCreate("Подготовка объекта для сохранения")
-//                repoCreate("Создание объявления в БД")
-//            }
-//            prepareResult("Подготовка ответа")
+            chain {
+                title = "Логика сохранения"
+                repoPrepareCreate("Подготовка объекта для сохранения")
+                repoCreate("Создание объявления в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Получить объявление", TrackerCommand.READ) {
             stubs("Обработка стабов") {
@@ -64,16 +67,16 @@ class TrackerTaskProcessor(
 
                 finishAdValidation("Успешное завершение процедуры валидации")
             }
-//            chain {
-//                title = "Логика чтения"
-//                repoRead("Чтение объявления из БД")
-//                worker {
-//                    title = "Подготовка ответа для Read"
-//                    on { state == TrackerState.RUNNING }
-//                    handle { taskRepoDone = taskRepoRead }
-//                }
-//            }
-//            prepareResult("Подготовка ответа")
+            chain {
+                title = "Логика чтения"
+                repoRead("Чтение объявления из БД")
+                worker {
+                    title = "Подготовка ответа для Read"
+                    on { state == TrackerState.RUNNING }
+                    handle { taskRepoDone = taskRepoRead }
+                }
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Изменить объявление", TrackerCommand.UPDATE) {
             stubs("Обработка стабов") {
@@ -101,14 +104,14 @@ class TrackerTaskProcessor(
 
                 finishAdValidation("Успешное завершение процедуры валидации")
             }
-//            chain {
-//                title = "Логика сохранения"
-//                repoRead("Чтение объявления из БД")
-//                checkLock("Проверяем консистентность по оптимистичной блокировке")
-//                repoPrepareUpdate("Подготовка объекта для обновления")
-//                repoUpdate("Обновление объявления в БД")
-//            }
-//            prepareResult("Подготовка ответа")
+            chain {
+                title = "Логика сохранения"
+                repoRead("Чтение объявления из БД")
+                checkLock("Проверяем консистентность по оптимистичной блокировке")
+                repoPrepareUpdate("Подготовка объекта для обновления")
+                repoUpdate("Обновление объявления в БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Удалить объявление", TrackerCommand.DELETE) {
             stubs("Обработка стабов") {
@@ -129,14 +132,14 @@ class TrackerTaskProcessor(
                 validateLockProperFormat("Проверка формата lock")
                 finishAdValidation("Успешное завершение процедуры валидации")
             }
-//            chain {
-//                title = "Логика удаления"
-//                repoRead("Чтение объявления из БД")
-//                checkLock("Проверяем консистентность по оптимистичной блокировке")
-//                repoPrepareDelete("Подготовка объекта для удаления")
-//                repoDelete("Удаление объявления из БД")
-//            }
-//            prepareResult("Подготовка ответа")
+            chain {
+                title = "Логика удаления"
+                repoRead("Чтение объявления из БД")
+                checkLock("Проверяем консистентность по оптимистичной блокировке")
+                repoPrepareDelete("Подготовка объекта для удаления")
+                repoDelete("Удаление объявления из БД")
+            }
+            prepareResult("Подготовка ответа")
         }
         operation("Поиск объявлений", TrackerCommand.SEARCH) {
             stubs("Обработка стабов") {
@@ -146,13 +149,13 @@ class TrackerTaskProcessor(
                 stubNoCase("Ошибка: запрошенный стаб недопустим")
             }
             validation {
-                worker("Копируем поля в adFilterValidating") { taskFilterValidating = taskFilterRequest.deepCopy() }
+                worker("Копируем поля в taskFilterValidating") { taskFilterValidating = taskFilterRequest.deepCopy() }
                 validateSearchStringLength("Валидация длины строки поиска в фильтре")
 
                 finishAdFilterValidation("Успешное завершение процедуры валидации")
             }
-//            repoSearch("Поиск объявления в БД по фильтру")
-//            prepareResult("Подготовка ответа")
+            repoSearch("Поиск объявления в БД по фильтру")
+            prepareResult("Подготовка ответа")
         }
     }.build()
 }

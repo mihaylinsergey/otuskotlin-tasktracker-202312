@@ -70,6 +70,7 @@ private fun TrackerTask.toTransportTask(): TaskResponseObject = TaskResponseObje
     taskType = taskType.toTransportTask(),
     visibility = visibility.toTransportTask(),
     permissions = permissionsClient.toTransportTask(),
+    lock = lock.takeIf { it != TrackerTaskLock.NONE }?.asString(),
 )
 
 internal fun List<TrackerStageList>.stageListToTransport() : List<StageList>? = this

@@ -15,7 +15,6 @@ fun ICorChainDsl<TrackerContext>.repoPrepareUpdate(title: String) = worker {
             this.title = taskValidated.title
             this.executor = taskValidated.executor
             this.stageList = taskValidated.stageList
-            this.stageList = taskValidated.stageList
             this.deadline = taskValidated.deadline
             this.address = taskValidated.address
             this.comment = taskValidated.comment

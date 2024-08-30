@@ -19,7 +19,9 @@ suspend inline fun <reified Q : IRequest, @Suppress("unused") reified R : IRespo
     {
         fromTransport(receive<Q>())
     },
-    { respond(toTransportTask()) },
+    {
+        respond(toTransportTask())
+    },
     clazz,
     logId,
 )

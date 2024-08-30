@@ -10,7 +10,7 @@ object TrackerTaskStubRepair {
                 id = "1",
                 stage = "Удаление асфальтового покрытия",
                 value = "3 м2",
-                comment = "Организовать вывоз мустора"),
+                comment = "Организовать вывоз мусора"),
                 TrackerStageList(
                     id = "2",
                     stage = "Восстановление дорожного покрытия",
